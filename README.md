@@ -1,24 +1,24 @@
 # Simple RSVP Comments
 
-Simple RSVP Comments adalah plugin WordPress untuk menampilkan form RSVP dan daftar ucapan tamu. Form dikirim melalui AJAX, sehingga ucapan baru bisa tersimpan dan daftar komentar diperbarui tanpa refresh halaman.
+A lightweight WordPress RSVP plugin with guest messages, instant AJAX submissions, and a clean comment-style display.
 
-Plugin ini cocok untuk halaman undangan, event, atau guestbook sederhana.
+Simple RSVP Comments is built for invitation pages, event websites, wedding landing pages, and simple guestbooks. Drop in a shortcode, let guests confirm their attendance, and show their wishes without reloading the page.
 
-## Fitur
+## Highlights
 
-- Shortcode form RSVP: `[simple_rsvp_comments]`
-- Alias shortcode: `[rsvp_form]`
-- Input nama, status kehadiran, dan komentar atau ucapan.
-- Opsi kehadiran: `Hadir`, `Tidak Hadir`, dan `Masih Ragu`.
-- Submit via AJAX tanpa reload halaman.
-- Daftar ucapan dengan pagination.
-- Data RSVP disimpan sebagai custom post type WordPress.
-- Halaman admin `RSVP Entries` untuk melihat dan mengedit data RSVP.
-- Kolom admin khusus untuk status kehadiran.
-- Meta box admin untuk mengubah status kehadiran.
-- Styling frontend menggunakan file CSS terpisah.
+- RSVP form powered by the `[simple_rsvp_comments]` shortcode.
+- Alternative shortcode support with `[rsvp_form]`.
+- Guest name, attendance status, and message fields.
+- Attendance options: `Hadir`, `Tidak Hadir`, and `Masih Ragu`.
+- AJAX form submission with no page refresh.
+- Live message list with pagination.
+- RSVP entries stored as a WordPress custom post type.
+- Admin dashboard menu for reviewing and editing entries.
+- Custom admin column for attendance status.
+- Admin meta box for updating attendance status.
+- Frontend CSS and JavaScript kept in separate asset files.
 
-## Struktur File
+## Project Structure
 
 ```text
 simple-rsvp-comments/
@@ -29,89 +29,115 @@ simple-rsvp-comments/
     `-- simple-rsvp-comments.js
 ```
 
-## Instalasi
+## Installation
 
-1. Download atau clone repository ini.
-2. Salin folder `simple-rsvp-comments` ke direktori plugin WordPress:
+1. Download or clone this repository.
+2. Copy the `simple-rsvp-comments` folder into your WordPress plugins directory:
 
 ```text
 wp-content/plugins/simple-rsvp-comments/
 ```
 
-3. Masuk ke dashboard WordPress.
-4. Buka menu `Plugins`.
-5. Aktifkan plugin `Simple RSVP Comments`.
+3. Open your WordPress dashboard.
+4. Go to `Plugins`.
+5. Activate `Simple RSVP Comments`.
 
-## Penggunaan
+## Usage
 
-Tambahkan shortcode berikut ke halaman atau post WordPress:
+Add the shortcode to any page or post:
 
 ```text
 [simple_rsvp_comments]
 ```
 
-Shortcode alias juga tersedia:
+You can also use the alias shortcode:
 
 ```text
 [rsvp_form]
 ```
 
-Secara default, daftar ucapan menampilkan 5 item per halaman. Jumlah item per halaman bisa diubah dengan atribut `per_page`:
+By default, the message list shows 5 entries per page. You can customize that with the `per_page` attribute:
 
 ```text
 [simple_rsvp_comments per_page="10"]
 ```
 
-## Cara Kerja
+## What Guests See
 
-Saat plugin aktif, WordPress akan mendaftarkan custom post type bernama `simple_rsvp_entry`. Setiap RSVP yang dikirim akan disimpan sebagai post dengan:
+The shortcode renders:
 
-- Judul post: nama tamu.
-- Konten post: komentar atau ucapan.
-- Meta `_src_attendance`: status kehadiran.
+- A name field.
+- An attendance dropdown.
+- A message field for wishes or comments.
+- A submit button.
+- A paginated list of submitted RSVP messages.
 
-Frontend menggunakan AJAX WordPress melalui `admin-ajax.php` untuk:
+When a guest submits the form, the plugin saves the RSVP and refreshes the message list through AJAX.
 
-- Mengirim RSVP baru dengan action `simple_rsvp_submit`.
-- Memuat daftar ucapan dengan action `simple_rsvp_load`.
+## How It Works
 
-## Prefill Nama Tamu
+The plugin registers a private WordPress custom post type:
 
-Plugin akan mencoba membaca shortcode `[to_name]` jika shortcode tersebut tersedia di website. Jika ada, nilai tersebut otomatis digunakan sebagai isi awal field nama.
+```text
+simple_rsvp_entry
+```
 
-Fitur ini berguna untuk halaman undangan yang sudah memiliki shortcode nama tamu dari plugin atau sistem lain.
+Each RSVP submission is saved as a post:
+
+- Post title: guest name.
+- Post content: guest message.
+- Post meta `_src_attendance`: attendance status.
+
+The frontend communicates with WordPress through `admin-ajax.php` using two AJAX actions:
+
+- `simple_rsvp_submit` for saving new RSVP entries.
+- `simple_rsvp_load` for loading paginated RSVP messages.
+
+## Guest Name Prefill
+
+If your site provides a `[to_name]` shortcode, this plugin will automatically use it to prefill the guest name field.
+
+This is helpful for invitation pages that already personalize guest names through another theme, builder, or invitation system.
 
 ## Styling
 
-Style frontend berada di:
+Frontend styles live in:
 
 ```text
 assets/simple-rsvp-comments.css
 ```
 
-Script frontend berada di:
+Frontend behavior lives in:
 
 ```text
 assets/simple-rsvp-comments.js
 ```
 
-CSS menggunakan font family `Born2` dan `"Merchant Copy"`. Pastikan font tersebut sudah tersedia dari theme atau builder yang digunakan. Jika belum tersedia, browser akan memakai fallback font.
+The stylesheet references the `Born2` and `"Merchant Copy"` font families. Make sure those fonts are loaded by your theme or page builder if you want the intended visual style. If they are not available, the browser will fall back to default fonts.
 
-## Keamanan dan Validasi
+## Security
 
-Plugin menggunakan:
+The plugin uses standard WordPress safeguards:
 
-- WordPress nonce untuk request AJAX.
-- Sanitasi input dengan fungsi bawaan WordPress.
-- Validasi pilihan kehadiran.
-- Permission check saat menyimpan meta box di admin.
+- Nonce validation for AJAX requests.
+- Input sanitization before saving data.
+- Attendance value validation.
+- Capability checks when saving admin meta box data.
 
-## Kebutuhan
+## Requirements
 
 - WordPress.
-- jQuery bawaan WordPress.
-- PHP dengan dukungan fungsi WordPress standar.
+- WordPress bundled jQuery.
+- PHP supported by your WordPress installation.
 
-## Lisensi
+## Roadmap Ideas
 
-Belum ditentukan.
+- Export RSVP entries to CSV.
+- Add configurable attendance labels.
+- Add shortcode attributes for form labels.
+- Add moderation controls before messages appear publicly.
+- Add settings page for styling and behavior.
+
+## License
+
+License not specified yet.
