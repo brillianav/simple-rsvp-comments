@@ -711,7 +711,7 @@
     border-radius: 0 !important;
 
     color: var(--src-avatar-text, #75471f);
-    background: #3d2517 !important;
+    background: var(--src-avatar-outline, #3d2517) !important;
 
     font-family: "Press Start 2P", sans-serif;
     font-size: 10px;
@@ -748,7 +748,7 @@
     );
 
     filter:
-        drop-shadow(0 3px 0 #24130b);
+        drop-shadow(0 3px 0 var(--src-avatar-shadow, #24130b));
 
     isolation: isolate;
     overflow: visible;
@@ -765,12 +765,12 @@
     background:
         linear-gradient(
             to bottom,
-            #f7d58a 0,
-            #f7d58a 4px,
-            #d49048 4px,
-            #bd7138 calc(100% - 5px),
-            #75401f calc(100% - 5px),
-            #75401f 100%
+            var(--src-avatar-frame-light, #f7d58a) 0,
+            var(--src-avatar-frame-light, #f7d58a) 4px,
+            var(--src-avatar-frame, #d49048) 4px,
+            var(--src-avatar-frame-mid, #bd7138) calc(100% - 5px),
+            var(--src-avatar-frame-dark, #75401f) calc(100% - 5px),
+            var(--src-avatar-frame-dark, #75401f) 100%
         );
 
     clip-path: polygon(
@@ -797,8 +797,8 @@
     );
 
     box-shadow:
-        inset 3px 0 0 rgba(255, 225, 155, 0.55),
-        inset -3px 0 0 rgba(93, 48, 22, 0.3);
+        inset 3px 0 0 var(--src-avatar-frame-glow, rgba(255, 225, 155, 0.55)),
+        inset -3px 0 0 var(--src-avatar-frame-shade, rgba(93, 48, 22, 0.3));
 
     pointer-events: none;
 }
@@ -845,36 +845,76 @@
 /* Avatar color variations */
 
 .src-rsvp__avatar--1 {
+    --src-avatar-outline: #704018;
+    --src-avatar-shadow: #3b2110;
+    --src-avatar-frame-light: #ffe08a;
+    --src-avatar-frame: #d99a3f;
+    --src-avatar-frame-mid: #b76d2f;
+    --src-avatar-frame-dark: #704018;
+    --src-avatar-frame-glow: rgba(255, 230, 157, 0.68);
+    --src-avatar-frame-shade: rgba(83, 42, 17, 0.32);
     --src-avatar-bg: #fff2bd;
-    --src-avatar-text: #9b601e;
+    --src-avatar-text: #8f561b;
 
     color: var(--src-avatar-text);
 }
 
 .src-rsvp__avatar--2 {
-    --src-avatar-bg: #e8dcc8;
-    --src-avatar-text: #493324;
+    --src-avatar-outline: #4f6f2c;
+    --src-avatar-shadow: #263918;
+    --src-avatar-frame-light: #d9e78d;
+    --src-avatar-frame: #9fbd58;
+    --src-avatar-frame-mid: #6f8e3c;
+    --src-avatar-frame-dark: #4f6f2c;
+    --src-avatar-frame-glow: rgba(230, 244, 164, 0.58);
+    --src-avatar-frame-shade: rgba(45, 72, 25, 0.32);
+    --src-avatar-bg: #edf4c8;
+    --src-avatar-text: #3f5f27;
 
     color: var(--src-avatar-text);
 }
 
 .src-rsvp__avatar--3 {
-    --src-avatar-bg: #dce9c9;
-    --src-avatar-text: #52653a;
+    --src-avatar-outline: #7d4f24;
+    --src-avatar-shadow: #4b2a14;
+    --src-avatar-frame-light: #f7c17a;
+    --src-avatar-frame: #d98942;
+    --src-avatar-frame-mid: #aa5d2d;
+    --src-avatar-frame-dark: #7d4f24;
+    --src-avatar-frame-glow: rgba(255, 205, 137, 0.6);
+    --src-avatar-frame-shade: rgba(86, 43, 18, 0.3);
+    --src-avatar-bg: #ffe0b9;
+    --src-avatar-text: #7c4724;
 
     color: var(--src-avatar-text);
 }
 
 .src-rsvp__avatar--4 {
-    --src-avatar-bg: #f1d4bb;
-    --src-avatar-text: #8a4c28;
+    --src-avatar-outline: #446a73;
+    --src-avatar-shadow: #203c43;
+    --src-avatar-frame-light: #a8d8c5;
+    --src-avatar-frame: #66ad9c;
+    --src-avatar-frame-mid: #4d8790;
+    --src-avatar-frame-dark: #446a73;
+    --src-avatar-frame-glow: rgba(197, 239, 218, 0.52);
+    --src-avatar-frame-shade: rgba(33, 71, 78, 0.3);
+    --src-avatar-bg: #d5f0df;
+    --src-avatar-text: #2f6470;
 
     color: var(--src-avatar-text);
 }
 
 .src-rsvp__avatar--5 {
-    --src-avatar-bg: #dfd2eb;
-    --src-avatar-text: #684582;
+    --src-avatar-outline: #75415b;
+    --src-avatar-shadow: #472536;
+    --src-avatar-frame-light: #e8a4b4;
+    --src-avatar-frame: #bf6f8a;
+    --src-avatar-frame-mid: #9a516e;
+    --src-avatar-frame-dark: #75415b;
+    --src-avatar-frame-glow: rgba(247, 191, 202, 0.52);
+    --src-avatar-frame-shade: rgba(91, 39, 60, 0.3);
+    --src-avatar-bg: #f3d8dc;
+    --src-avatar-text: #79405c;
 
     color: var(--src-avatar-text);
 }
