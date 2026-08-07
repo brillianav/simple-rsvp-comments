@@ -1,6 +1,6 @@
 # Simple RSVP Comments
 
-A lightweight WordPress RSVP plugin with guest messages, instant AJAX submissions, and a clean comment-style display.
+A lightweight WordPress RSVP plugin with guest messages, instant AJAX submissions, and a playful pixel-art inspired comment display.
 
 Simple RSVP Comments is built for invitation pages, event websites, wedding landing pages, and simple guestbooks. Drop in a shortcode, let guests confirm their attendance, and show their wishes without reloading the page.
 
@@ -12,11 +12,12 @@ Simple RSVP Comments is built for invitation pages, event websites, wedding land
 - Attendance options: `Hadir`, `Tidak Hadir`, and `Masih Ragu`.
 - AJAX form submission with no page refresh.
 - Live message list with pagination.
+- Automatic attendance badge styling for attending, maybe, and not attending states.
 - RSVP entries stored as a WordPress custom post type.
 - Admin dashboard menu for reviewing and editing entries.
 - Custom admin column for attendance status.
 - Admin meta box for updating attendance status.
-- Frontend CSS and JavaScript kept in separate asset files.
+- Stardew-inspired pixel UI styling kept in separate frontend assets.
 
 ## Project Structure
 
@@ -69,8 +70,8 @@ The shortcode renders:
 - A name field.
 - An attendance dropdown.
 - A message field for wishes or comments.
-- A submit button.
-- A paginated list of submitted RSVP messages.
+- A pixel-style submit button.
+- A paginated list of submitted RSVP messages with initials avatars and colored attendance badges.
 
 When a guest submits the form, the plugin saves the RSVP and refreshes the message list through AJAX.
 
@@ -113,7 +114,13 @@ Frontend behavior lives in:
 assets/simple-rsvp-comments.js
 ```
 
-The stylesheet references the `Born2` and `"Merchant Copy"` font families. Make sure those fonts are loaded by your theme or page builder if you want the intended visual style. If they are not available, the browser will fall back to default fonts.
+The stylesheet uses a warm pixel-art visual direction with custom colors, clipped button shapes, pixel cards, and status badges. It references the `"Press Start 2P"` and `"Merchant Copy"` font families. Make sure those fonts are loaded by your theme or page builder if you want the intended visual style. If they are not available, the browser will fall back to default fonts.
+
+The JavaScript also normalizes RSVP status text and applies badge classes for:
+
+- `Hadir`
+- `Masih Ragu`
+- `Tidak Hadir`
 
 ## Security
 

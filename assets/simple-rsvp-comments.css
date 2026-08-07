@@ -1,483 +1,1415 @@
+/* =========================================
+   RSVP STARDew VALLEY
+   FULL COPY-PASTE CSS
+========================================= */
+
 .src-rsvp {
+    --rsvp-dark: #572307;
+    --rsvp-brown: #7d421f;
+    --rsvp-brown-light: #b66a32;
+    --rsvp-orange: #dc8b3d;
+    --rsvp-gold: #f2c979;
+    --rsvp-cream: #fff1c4;
+    --rsvp-background: #fffdf8;
+    --rsvp-text: #30241c;
+    --rsvp-muted: #75685e;
+
+    width: 100%;
     max-width: 460px;
     margin: 0 auto;
-    font-family: Born2, sans-serif;
-    color: #1f2933;
+
+    color: var(--rsvp-text);
+    font-family: "Press Start 2P", sans-serif;
 }
 
+.src-rsvp,
 .src-rsvp *,
 .src-rsvp *::before,
 .src-rsvp *::after {
     box-sizing: border-box;
 }
 
-.src-rsvp__title {
-    text-align: center;
-    font-family: Born2, sans-serif;
-    font-size: 26px;
-    line-height: 1.2;
-    margin: 0 0 32px;
-    color: #222;
+.src-rsvp form {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
+.src-rsvp p {
+    margin-top: 0;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.src-rsvp__title {
+    display: block;
+    width: 100%;
+
+    margin: 0 0 30px;
+
+    color: #30241c;
+
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   FORM FIELD
+========================================= */
+
 .src-rsvp__field {
-    margin-bottom: 13px;
+    position: relative;
+    display: block;
+    clear: both;
+
+    width: 100%;
+
+    margin: 0 0 17px;
+    padding: 0;
 }
 
 .src-rsvp__field label {
-    display: block;
-    font-family: Born2, sans-serif;
-    font-size: 16px;
-    line-height: 1.3;
+    position: static !important;
+
+    display: block !important;
+    float: none !important;
+
+    width: auto;
+    height: auto;
+
+    margin: 0 0 9px !important;
+    padding: 0;
+
+    color: #3d2517;
+
+    font-family: "Press Start 2P", sans-serif !important;
+    font-size: 8px;
     font-weight: 400;
-    margin: 0 0 7px;
-    color: #222;
+    line-height: 1.7;
+
+    letter-spacing: 0;
+    text-transform: none;
+
+    transform: none !important;
+
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
 }
+
+
+/* =========================================
+   INPUT, SELECT, TEXTAREA
+========================================= */
 
 .src-rsvp__field input,
 .src-rsvp__field select,
 .src-rsvp__field textarea {
-    width: 100%;
-    border: 1px solid #cfd7df;
-    border-radius: 0;
-    padding: 11px 13px;
-    font-family: "Merchant Copy", Sans-serif;
-    font-size: 10px;
-    line-height: 1.3;
+    position: static;
+
+    display: block;
+
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0 !important;
+    padding: 12px 13px !important;
+
+    border: 1px solid #9c8c7d !important;
+    border-radius: 0 !important;
+
+    color: #30241c !important;
+    background-color: #ffffff !important;
+
+    font-family: "Merchant Copy", sans-serif;
+    font-size: 10px !important;
     font-weight: 400;
-    color: #1f2933;
-    background: #fff;
-    outline: none;
-    box-shadow: none;
+    line-height: 1.5;
+
+    outline: none !important;
+    box-shadow: none !important;
+
+    transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease;
+}
+
+.src-rsvp__field input,
+.src-rsvp__field select {
+    min-height: 42px;
+}
+
+.src-rsvp__field select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+.src-rsvp__field textarea {
+    min-height: 100px;
+    resize: vertical;
 }
 
 .src-rsvp__field input::placeholder,
 .src-rsvp__field textarea::placeholder {
-    color: #6b7280;
+    color: #827970;
+    font-size: 10px;
     opacity: 1;
+}
+
+.src-rsvp__field input:hover,
+.src-rsvp__field select:hover,
+.src-rsvp__field textarea:hover {
+    border-color: #7d5a3a !important;
 }
 
 .src-rsvp__field input:focus,
 .src-rsvp__field select:focus,
 .src-rsvp__field textarea:focus {
-    border-color: #b58d3a;
-    box-shadow: none;
-    outline: none;
+    border-color: #b66a32 !important;
+    background-color: #fffdf8 !important;
+
+    outline: none !important;
+
+    box-shadow:
+        0 0 0 2px rgba(182, 106, 50, 0.12) !important;
 }
 
-.src-rsvp__field textarea {
-    min-height: 86px;
-    resize: vertical;
-}
+
+/* =========================================
+   PHONE FIELD
+========================================= */
 
 .src-rsvp__phone {
     display: flex;
-    align-items: center;
-    border: 1px solid #cfd7df;
+    align-items: stretch;
+
+    width: 100%;
+
+    border: 1px solid #9c8c7d;
     border-radius: 0;
+
+    background: #ffffff;
+
     overflow: hidden;
-    background: #fff;
 }
 
 .src-rsvp__phone:focus-within {
-    border-color: #b58d3a;
+    border-color: #b66a32;
+
+    box-shadow:
+        0 0 0 2px rgba(182, 106, 50, 0.12);
 }
 
 .src-rsvp__phone span {
-    min-height: 38px;
-    padding: 0 13px;
-    border-right: 1px solid #d6dde4;
-    display: flex;
-    align-items: center;
-    font-family: Born2, sans-serif;
-    font-size: 15px;
-    line-height: 1.3;
-    font-weight: 400;
-    color: #222;
-    background: #fff;
-}
-
-.src-rsvp__phone input {
-    border: 0 !important;
-    border-radius: 0 !important;
-    margin: 0;
-    flex: 1;
-    min-width: 0;
-    background: transparent;
-}
-
-.src-rsvp__phone input:focus {
-    border: 0 !important;
-    box-shadow: none;
-    outline: none;
-}
-
-/* Pixelated button */
-.src-rsvp__button {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(100% - 18px);
-    min-height: 48px;
-    margin: 18px auto 0;
-    padding: 12px 30px;
-    background: transparent !important;
-    border: none !important;
+
+    flex: 0 0 auto;
+
+    min-height: 42px;
+
+    margin: 0;
+    padding: 0 12px;
+
+    border-right: 1px solid #d6c7b8;
+
+    color: #3d2517;
+    background: #fff8e8;
+
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.src-rsvp__phone input {
+    flex: 1 1 auto;
+
+    min-width: 0;
+
+    margin: 0 !important;
+
+    border: 0 !important;
     border-radius: 0 !important;
+
+    background: transparent !important;
+
     box-shadow: none !important;
-    overflow: visible;
-    isolation: isolate;
-    color: #ffffff !important;
-    font-family: Born2, sans-serif;
-    font-size: 16px;
-    font-weight: 900;
-    line-height: 1;
+}
+
+.src-rsvp__phone input:hover,
+.src-rsvp__phone input:focus {
+    border: 0 !important;
+
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================
+   STARDEW VALLEY INVITATION BUTTON
+========================================= */
+
+.src-rsvp button.src-rsvp__button,
+.src-rsvp .src-rsvp__button {
+    --btn-darkest: #4a1704;
+    --btn-outline: #702603;
+    --btn-shadow: #8d3507;
+    --btn-frame-dark: #b94d08;
+    --btn-frame: #e47c17;
+    --btn-frame-light: #f5a32d;
+    --btn-panel-border: #cf6410;
+    --btn-panel: #f8dda5;
+    --btn-panel-light: #ffe8b6;
+    --btn-decoration: #cb6716;
+    --btn-text: #241506;
+
+    position: relative;
+    z-index: 1;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content !important;
+    min-width: 160px;
+    max-width: calc(100% - 18px);
+    min-height: 50px;
+
+    margin: 22px auto 9px !important;
+    padding: 13px 30px !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    color: var(--btn-text) !important;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--btn-outline) 0,
+            var(--btn-outline) 3px,
+            var(--btn-frame-dark) 3px,
+            var(--btn-frame-dark) 6px,
+            var(--btn-frame) 6px,
+            var(--btn-frame) calc(100% - 6px),
+            var(--btn-outline) calc(100% - 6px),
+            var(--btn-outline) 100%
+        ) !important;
+
+    font-family: "Press Start 2P", sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 400;
+    line-height: 1.5;
+
+    letter-spacing: 0;
     text-align: center;
-    text-transform: uppercase;
     text-decoration: none;
+    text-transform: uppercase;
+    white-space: normal;
+
+    outline: none !important;
+    box-shadow: none !important;
+
     cursor: pointer;
     appearance: none;
-    transition: none;
+
+    overflow: visible;
+    isolation: isolate;
+
+    text-shadow:
+        1px 1px 0 rgba(255, 247, 219, 0.9);
+
+    clip-path: polygon(
+        8px 0,
+        calc(100% - 8px) 0,
+        calc(100% - 8px) 3px,
+        calc(100% - 4px) 3px,
+        calc(100% - 4px) 7px,
+        100% 7px,
+        100% calc(100% - 7px),
+        calc(100% - 4px) calc(100% - 7px),
+        calc(100% - 4px) calc(100% - 3px),
+        calc(100% - 8px) calc(100% - 3px),
+        calc(100% - 8px) 100%,
+        8px 100%,
+        8px calc(100% - 3px),
+        4px calc(100% - 3px),
+        4px calc(100% - 7px),
+        0 calc(100% - 7px),
+        0 7px,
+        4px 7px,
+        4px 3px,
+        8px 3px
+    );
+
+    filter:
+        drop-shadow(0 5px 0 var(--btn-darkest));
+
+    transform: translateY(0);
+
+    transition:
+        transform 0.12s steps(2, end),
+        filter 0.12s steps(2, end);
 }
 
-.src-rsvp__button::before,
-.src-rsvp__button::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    clip-path: polygon(
-        10px 0,
-        calc(100% - 10px) 0,
-        calc(100% - 10px) 4px,
-        calc(100% - 4px) 4px,
-        calc(100% - 4px) calc(50% - 8px),
-        100% calc(50% - 8px),
-        100% calc(50% + 8px),
-        calc(100% - 4px) calc(50% + 8px),
-        calc(100% - 4px) calc(100% - 4px),
-        calc(100% - 10px) calc(100% - 4px),
-        calc(100% - 10px) 100%,
-        10px 100%,
-        10px calc(100% - 4px),
-        4px calc(100% - 4px),
-        4px calc(50% + 8px),
-        0 calc(50% + 8px),
-        0 calc(50% - 8px),
-        4px calc(50% - 8px),
-        4px 4px,
-        10px 4px
-    );
-    pointer-events: none;
-}
+
+/* Orange inner frame */
 
 .src-rsvp__button::before {
-    background: #ffffff;
+    content: "";
+
+    position: absolute;
+    inset: 4px;
     z-index: -2;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--btn-frame-light) 0,
+            var(--btn-frame-light) 3px,
+            var(--btn-frame) 3px,
+            var(--btn-frame) calc(100% - 4px),
+            var(--btn-frame-dark) calc(100% - 4px),
+            var(--btn-frame-dark) 100%
+        );
+
+    clip-path: polygon(
+        5px 0,
+        calc(100% - 5px) 0,
+        calc(100% - 5px) 2px,
+        calc(100% - 2px) 2px,
+        calc(100% - 2px) 5px,
+        100% 5px,
+        100% calc(100% - 5px),
+        calc(100% - 2px) calc(100% - 5px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(100% - 5px) calc(100% - 2px),
+        calc(100% - 5px) 100%,
+        5px 100%,
+        5px calc(100% - 2px),
+        2px calc(100% - 2px),
+        2px calc(100% - 5px),
+        0 calc(100% - 5px),
+        0 5px,
+        2px 5px,
+        2px 2px,
+        5px 2px
+    );
+
+    box-shadow:
+        inset 3px 0 0 rgba(255, 195, 69, 0.55),
+        inset -3px 0 0 rgba(113, 37, 3, 0.25);
 }
+
+
+/* Cream inner panel and corner ornaments */
 
 .src-rsvp__button::after {
-    inset: 4px;
-    background: #222222;
+    content: "";
+
+    position: absolute;
+    inset: 9px 10px;
     z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            var(--btn-decoration),
+            var(--btn-decoration)
+        ) 8px 8px / 5px 5px no-repeat,
+
+        linear-gradient(
+            var(--btn-decoration),
+            var(--btn-decoration)
+        ) calc(100% - 13px) 8px / 5px 5px no-repeat,
+
+        linear-gradient(
+            var(--btn-decoration),
+            var(--btn-decoration)
+        ) 8px calc(100% - 13px) / 5px 5px no-repeat,
+
+        linear-gradient(
+            var(--btn-decoration),
+            var(--btn-decoration)
+        ) calc(100% - 13px) calc(100% - 13px) / 5px 5px no-repeat,
+
+        linear-gradient(
+            to bottom,
+            var(--btn-panel-light) 0,
+            var(--btn-panel) 4px,
+            var(--btn-panel) 100%
+        );
+
+    box-shadow:
+        0 0 0 2px var(--btn-panel-border),
+        inset 0 2px 0 rgba(255, 241, 195, 0.85),
+        inset 0 -2px 0 rgba(208, 104, 15, 0.16);
+
+    clip-path: polygon(
+        3px 0,
+        calc(100% - 3px) 0,
+        calc(100% - 3px) 3px,
+        100% 3px,
+        100% calc(100% - 3px),
+        calc(100% - 3px) calc(100% - 3px),
+        calc(100% - 3px) 100%,
+        3px 100%,
+        3px calc(100% - 3px),
+        0 calc(100% - 3px),
+        0 3px,
+        3px 3px
+    );
 }
 
-.src-rsvp__button:hover,
-.src-rsvp__button:focus {
-    background: transparent !important;
-    border: none !important;
+
+/* Hover and keyboard focus */
+
+.src-rsvp button.src-rsvp__button:hover,
+.src-rsvp button.src-rsvp__button:focus,
+.src-rsvp .src-rsvp__button:hover,
+.src-rsvp .src-rsvp__button:focus {
+    border: 0 !important;
+
+    color: var(--btn-text) !important;
+
+    outline: none !important;
     box-shadow: none !important;
-    color: #ffffff !important;
-    outline: none;
+
+    transform: translateY(-2px);
+
+    filter:
+        brightness(1.06)
+        drop-shadow(0 7px 0 var(--btn-darkest));
 }
 
-.src-rsvp__button:active {
-    transform: translate(2px, 2px);
+.src-rsvp__button:hover::after,
+.src-rsvp__button:focus::after {
+    background:
+        linear-gradient(
+            var(--btn-decoration),
+            var(--btn-decoration)
+        ) 8px 8px / 5px 5px no-repeat,
+
+        linear-gradient(
+            var(--btn-decoration),
+            var(--btn-decoration)
+        ) calc(100% - 13px) 8px / 5px 5px no-repeat,
+
+        linear-gradient(
+            var(--btn-decoration),
+            var(--btn-decoration)
+        ) 8px calc(100% - 13px) / 5px 5px no-repeat,
+
+        linear-gradient(
+            var(--btn-decoration),
+            var(--btn-decoration)
+        ) calc(100% - 13px) calc(100% - 13px) / 5px 5px no-repeat,
+
+        linear-gradient(
+            to bottom,
+            #fff0c6 0,
+            #fbe5b2 4px,
+            #fbe5b2 100%
+        );
 }
 
-.src-rsvp__button:disabled {
+
+/* Active / pressed */
+
+.src-rsvp button.src-rsvp__button:active,
+.src-rsvp .src-rsvp__button:active {
+    transform: translateY(4px);
+
+    filter:
+        brightness(0.97)
+        drop-shadow(0 1px 0 var(--btn-darkest));
+}
+
+.src-rsvp__button:active::before {
+    background:
+        linear-gradient(
+            to bottom,
+            var(--btn-frame-dark) 0,
+            var(--btn-frame) 4px,
+            var(--btn-frame) 100%
+        );
+}
+
+.src-rsvp__button:active::after {
+    transform: translateY(1px);
+}
+
+
+/* Disabled */
+
+.src-rsvp button.src-rsvp__button:disabled,
+.src-rsvp .src-rsvp__button:disabled {
+    opacity: 0.55;
+
     cursor: not-allowed;
-    opacity: .65;
+    pointer-events: none;
+
+    transform: none;
+
+    filter:
+        grayscale(0.3)
+        drop-shadow(0 3px 0 var(--btn-darkest));
 }
 
-.src-rsvp__button:disabled::before,
-.src-rsvp__button:disabled::after {
-    opacity: 1;
-}
+
+/* =========================================
+   ALERT
+========================================= */
 
 .src-rsvp__alert {
-    font-family: Born2, sans-serif;
-    font-size: 14px;
-    line-height: 1.4;
-    margin-top: 18px;
+    display: block;
+
+    width: 100%;
+
+    margin: 18px 0 0;
+
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 1.7;
+
     text-align: center;
 }
 
 .src-rsvp__alert.is-success {
-    color: #14843b;
+    color: #39813c;
 }
 
 .src-rsvp__alert.is-error {
-    color: #c5221f;
+    color: #b42c27;
 }
+
+
+/* =========================================
+   DIVIDER
+========================================= */
 
 .src-rsvp__divider {
-    border-top: 1px solid #d9dee3;
-    margin: 30px 0 24px;
+    display: block;
+
+    width: 100%;
+    height: 0;
+
+    margin: 34px 0 24px;
+
+    border: 0;
+    border-top: 1px solid #d9c9b8;
 }
+
+
+/* =========================================
+   EMPTY MESSAGE
+========================================= */
 
 .src-rsvp__empty {
-    font-family: Born2, sans-serif;
-    font-size: 14px;
-    text-align: center;
-    color: #667085;
+    display: block;
+
+    width: 100%;
+
     padding: 18px 10px;
+
+    color: var(--rsvp-muted);
+
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 1.7;
+
+    text-align: center;
 }
 
-.src-rsvp__card {
-    display: flex;
-    gap: 12px;
-    border: 1px solid #edf0f2;
-    border-radius: 0;
-    padding: 13px 10px;
-    margin-bottom: 12px;
-    background: #fff;
-    font-family: Born2, sans-serif;
+
+/* =========================================
+   RSVP LIST
+========================================= */
+
+.src-rsvp__list {
+    display: block;
+    width: 100%;
 }
+
+.src-rsvp__list.is-loading {
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+
+/* =========================================
+   RSVP CARD
+========================================= */
+
+.src-rsvp__card {
+    display: flex !important;
+    align-items: flex-start !important;
+
+    width: 100%;
+    min-width: 0;
+
+    gap: 14px;
+
+    margin: 0 0 13px !important;
+    padding: 14px 12px !important;
+
+    border: 1px solid #e5d7c5 !important;
+    border-radius: 0 !important;
+
+    color: var(--rsvp-text);
+    background: #fffdf8 !important;
+
+    font-family: "Press Start 2P", sans-serif;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    overflow: visible;
+}
+
+
+/* =========================================
+   STARDew VALLEY AVATAR
+========================================= */
+
 .src-rsvp__avatar {
     position: relative;
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
-    border-radius: 0;
-    border: 0;
-    background: transparent !important;
-    color: var(--src-avatar-color, #111);
-    font-family: Born2, sans-serif;
-    font-size: 22px;
-    line-height: 1;
-    display: flex;
+    z-index: 0;
+
+    display: flex !important;
     align-items: center;
     justify-content: center;
+
+    flex: 0 0 60px;
+
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px !important;
+    min-height: 60px !important;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    color: var(--src-avatar-text, #75471f);
+    background: #3d2517 !important;
+
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    text-shadow:
+        1px 1px 0 rgba(255, 255, 255, 0.65);
+
+    clip-path: polygon(
+        8px 0,
+        calc(100% - 8px) 0,
+        calc(100% - 8px) 4px,
+        calc(100% - 4px) 4px,
+        calc(100% - 4px) 8px,
+        100% 8px,
+        100% calc(100% - 8px),
+        calc(100% - 4px) calc(100% - 8px),
+        calc(100% - 4px) calc(100% - 4px),
+        calc(100% - 8px) calc(100% - 4px),
+        calc(100% - 8px) 100%,
+        8px 100%,
+        8px calc(100% - 4px),
+        4px calc(100% - 4px),
+        4px calc(100% - 8px),
+        0 calc(100% - 8px),
+        0 8px,
+        4px 8px,
+        4px 4px,
+        8px 4px
+    );
+
+    filter:
+        drop-shadow(0 3px 0 #24130b);
+
     isolation: isolate;
     overflow: visible;
 }
 
-.src-rsvp__avatar::before,
+.src-rsvp__avatar::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 3px;
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f7d58a 0,
+            #f7d58a 4px,
+            #d49048 4px,
+            #bd7138 calc(100% - 5px),
+            #75401f calc(100% - 5px),
+            #75401f 100%
+        );
+
+    clip-path: polygon(
+        6px 0,
+        calc(100% - 6px) 0,
+        calc(100% - 6px) 3px,
+        calc(100% - 3px) 3px,
+        calc(100% - 3px) 6px,
+        100% 6px,
+        100% calc(100% - 6px),
+        calc(100% - 3px) calc(100% - 6px),
+        calc(100% - 3px) calc(100% - 3px),
+        calc(100% - 6px) calc(100% - 3px),
+        calc(100% - 6px) 100%,
+        6px 100%,
+        6px calc(100% - 3px),
+        3px calc(100% - 3px),
+        3px calc(100% - 6px),
+        0 calc(100% - 6px),
+        0 6px,
+        3px 6px,
+        3px 3px,
+        6px 3px
+    );
+
+    box-shadow:
+        inset 3px 0 0 rgba(255, 225, 155, 0.55),
+        inset -3px 0 0 rgba(93, 48, 22, 0.3);
+
+    pointer-events: none;
+}
+
 .src-rsvp__avatar::after {
     content: "";
+
     position: absolute;
-    pointer-events: none;
-    clip-path: polygon(
-        38% 0,
-        62% 0,
-        62% 5%,
-        75% 5%,
-        75% 10%,
-        84% 10%,
-        84% 16%,
-        90% 16%,
-        90% 25%,
-        95% 25%,
-        95% 38%,
-        100% 38%,
-        100% 62%,
-        95% 62%,
-        95% 75%,
-        90% 75%,
-        90% 84%,
-        84% 84%,
-        84% 90%,
-        75% 90%,
-        75% 95%,
-        62% 95%,
-        62% 100%,
-        38% 100%,
-        38% 95%,
-        25% 95%,
-        25% 90%,
-        16% 90%,
-        16% 84%,
-        10% 84%,
-        10% 75%,
-        5% 75%,
-        5% 62%,
-        0 62%,
-        0 38%,
-        5% 38%,
-        5% 25%,
-        10% 25%,
-        10% 16%,
-        16% 16%,
-        16% 10%,
-        25% 10%,
-        25% 5%,
-        38% 5%
-    );
-}
 
-.src-rsvp__avatar::before {
-    inset: 0;
-    background: var(--src-avatar-color, #111);
-    z-index: -2;
-}
-
-.src-rsvp__avatar::after {
-    inset: 4px;
-    background: var(--src-avatar-bg, #fff);
+    inset: 9px;
     z-index: -1;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.38) 0,
+            rgba(255, 255, 255, 0) 48%
+        ),
+        var(--src-avatar-bg, #fff3c6);
+
+    clip-path: polygon(
+        3px 0,
+        calc(100% - 3px) 0,
+        calc(100% - 3px) 3px,
+        100% 3px,
+        100% calc(100% - 3px),
+        calc(100% - 3px) calc(100% - 3px),
+        calc(100% - 3px) 100%,
+        3px 100%,
+        3px calc(100% - 3px),
+        0 calc(100% - 3px),
+        0 3px,
+        3px 3px
+    );
+
+    box-shadow:
+        inset 3px 3px 0 rgba(255, 255, 255, 0.35),
+        inset -3px -3px 0 rgba(85, 48, 24, 0.12);
+
+    pointer-events: none;
 }
+
+
+/* Avatar color variations */
+
 .src-rsvp__avatar--1 {
-    --src-avatar-bg: #fff8e8;
-    --src-avatar-color: #c08a24;
-    color: #c08a24;
+    --src-avatar-bg: #fff2bd;
+    --src-avatar-text: #9b601e;
+
+    color: var(--src-avatar-text);
 }
 
 .src-rsvp__avatar--2 {
-    --src-avatar-bg: #f4efe6;
-    --src-avatar-color: #3a2f24;
-    color: #3a2f24;
+    --src-avatar-bg: #e8dcc8;
+    --src-avatar-text: #493324;
+
+    color: var(--src-avatar-text);
 }
 
 .src-rsvp__avatar--3 {
-    --src-avatar-bg: #edf3e8;
-    --src-avatar-color: #5f6f45;
-    color: #5f6f45;
+    --src-avatar-bg: #dce9c9;
+    --src-avatar-text: #52653a;
+
+    color: var(--src-avatar-text);
 }
 
 .src-rsvp__avatar--4 {
-    --src-avatar-bg: #f7ece2;
-    --src-avatar-color: #9a5b2f;
-    color: #9a5b2f;
+    --src-avatar-bg: #f1d4bb;
+    --src-avatar-text: #8a4c28;
+
+    color: var(--src-avatar-text);
 }
 
 .src-rsvp__avatar--5 {
-    --src-avatar-bg: #f2edf8;
-    --src-avatar-color: #6d4a8f;
-    color: #6d4a8f;
+    --src-avatar-bg: #dfd2eb;
+    --src-avatar-text: #684582;
+
+    color: var(--src-avatar-text);
 }
 
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
 .src-rsvp__content {
-    flex: 1;
+    display: block;
+
+    flex: 1 1 auto;
+
+    width: auto;
     min-width: 0;
+
+    margin: 0;
+    padding: 0;
+}
+
+.src-rsvp__content p {
+    margin: 0;
 }
 
 .src-rsvp__name-row {
-    display: flex;
+    display: flex !important;
     align-items: center;
-    gap: 5px;
-    margin-bottom: 4px;
+
     flex-wrap: wrap;
+    gap: 6px;
+
+    width: 100%;
+
+    margin: 0 0 7px;
+    padding: 0;
 }
 
 .src-rsvp__name-row strong {
-    font-family: Born2, sans-serif;
-    font-size: 20px;
-    line-height: 1.2;
-    color: #111;
-    font-weight: 500;
-}
+    display: inline;
 
-.src-rsvp__badge {
-    background: #bdeff2;
-    color: #15616d;
-    font-family: Born2, sans-serif;
-    font-size: 11px;
-    line-height: 1.1;
-    padding: 3px 6px;
-    border-radius: 0;
-}
+    margin: 0;
+    padding: 0;
 
-.src-rsvp__message {
-    font-family: "Merchant Copy", Sans-serif;
+    color: #30241c;
+
+    font-family: "Press Start 2P", sans-serif;
     font-size: 10px;
-    line-height: 1.45;
     font-weight: 400;
-    color: #222222;
-    margin-bottom: 7px;
+    line-height: 1.6;
+
     overflow-wrap: anywhere;
 }
 
-.src-rsvp__date {
-    font-family: Born2, sans-serif;
-    font-size: 14px;
-    line-height: 1.35;
+
+/* =========================================
+   ATTENDANCE BADGE
+========================================= */
+
+.src-rsvp__badge {
+    display: inline-flex;
+    align-items: center;
+
+    margin: 0;
+    padding: 4px 6px;
+
+    border: 0;
+    border-radius: 0;
+
+    color: #315b30;
+    background: #dbe9bd;
+
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 6px;
     font-weight: 400;
-    color: #696969;
+    line-height: 1.5;
+
+    white-space: normal;
 }
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.src-rsvp__message {
+    display: block;
+
+    width: 100%;
+
+    margin: 0 0 8px;
+    padding: 0;
+
+    color: #3b332d;
+
+    font-family: "Merchant Copy", sans-serif;
+    font-size: 10px !important;
+    font-weight: 400;
+    line-height: 1.55;
+
+    white-space: normal;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+.src-rsvp__date {
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    color: #75685e;
+
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 7px;
+    font-weight: 400;
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+.src-rsvp__pagination {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+    gap: 7px;
+
+    width: 100%;
+
+    margin: 24px 0 0;
+    padding: 4px 0 6px;
+
+    font-family: "Press Start 2P", sans-serif;
+}
+
+.src-rsvp button.src-rsvp__page,
+.src-rsvp .src-rsvp__page {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    min-width: 38px;
+    height: 38px;
+
+    margin: 0 !important;
+    padding: 0 10px !important;
+
+    border: 2px solid #7d421f !important;
+    border-radius: 0 !important;
+
+    color: #4a2b18 !important;
+    background: #f6d58c !important;
+
+    font-family: "Press Start 2P", sans-serif !important;
+    font-size: 7px !important;
+    font-weight: 400;
+    line-height: 1;
+
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+
+    outline: none !important;
+
+    box-shadow:
+        inset 0 -3px 0 rgba(169, 84, 32, 0.35) !important;
+
+    cursor: pointer;
+    appearance: none;
+
+    transition:
+        transform 0.1s steps(2, end),
+        filter 0.1s steps(2, end);
+}
+
+.src-rsvp button.src-rsvp__page:hover,
+.src-rsvp button.src-rsvp__page:focus,
+.src-rsvp .src-rsvp__page:hover,
+.src-rsvp .src-rsvp__page:focus {
+    border-color: #572307 !important;
+
+    color: #3d2517 !important;
+    background: #ffe09a !important;
+
+    outline: none !important;
+
+    transform: translateY(-1px);
+    filter: brightness(1.03);
+}
+
+.src-rsvp button.src-rsvp__page.is-active,
+.src-rsvp .src-rsvp__page.is-active {
+    border-color: #572307 !important;
+
+    color: #fff1c4 !important;
+    background: #7d421f !important;
+
+    box-shadow:
+        inset 0 3px 0 rgba(62, 29, 11, 0.35) !important;
+
+    transform: translateY(1px);
+}
+
+.src-rsvp button.src-rsvp__page:disabled,
+.src-rsvp .src-rsvp__page:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
+
+    transform: none;
+    filter: grayscale(0.35);
+}
+
+.src-rsvp button.src-rsvp__page:disabled:hover,
+.src-rsvp button.src-rsvp__page:disabled:focus,
+.src-rsvp .src-rsvp__page:disabled:hover,
+.src-rsvp .src-rsvp__page:disabled:focus {
+    border-color: #7d421f !important;
+
+    color: #4a2b18 !important;
+    background: #f6d58c !important;
+
+    transform: none;
+    filter: grayscale(0.35);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 480px) {
     .src-rsvp {
+        width: 100%;
         max-width: 100%;
     }
 
-    .src-rsvp__button {
-        width: calc(100% - 18px);
+    .src-rsvp__title {
+        margin-bottom: 25px;
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .src-rsvp__field {
+        margin-bottom: 16px;
+    }
+
+    .src-rsvp__field label {
+        margin-bottom: 8px !important;
+
+        font-size: 7px;
+        line-height: 1.7;
+    }
+
+    .src-rsvp__field input,
+    .src-rsvp__field select,
+    .src-rsvp__field textarea {
+        font-size: 10px !important;
+    }
+
+    .src-rsvp button.src-rsvp__button,
+    .src-rsvp .src-rsvp__button {
+        min-width: 170px;
+        max-width: calc(100% - 16px);
+        min-height: 48px;
+
+        padding: 12px 24px !important;
+
+        font-size: 9px !important;
     }
 
     .src-rsvp__card {
-        padding: 12px 9px;
+        gap: 11px;
+
+        padding: 12px 9px !important;
+    }
+
+    .src-rsvp__avatar {
+        flex-basis: 54px;
+
+        width: 54px !important;
+        height: 54px !important;
+        min-width: 54px !important;
+        min-height: 54px !important;
+
+        font-size: 8px;
+    }
+
+    .src-rsvp__avatar::after {
+        inset: 8px;
+    }
+
+    .src-rsvp__name-row strong {
+        font-size: 9px;
+        line-height: 1.6;
+    }
+
+    .src-rsvp__badge {
+        font-size: 5px;
+    }
+
+    .src-rsvp__message {
+        font-size: 10px !important;
+        line-height: 1.55;
+    }
+
+    .src-rsvp__date {
+        font-size: 6px;
+        line-height: 1.7;
+    }
+
+    .src-rsvp__pagination {
+        gap: 5px;
+    }
+
+    .src-rsvp button.src-rsvp__page,
+    .src-rsvp .src-rsvp__page {
+        min-width: 34px;
+        height: 34px;
+
+        padding-right: 7px !important;
+        padding-left: 7px !important;
+
+        font-size: 6px !important;
     }
 }
 
-/* Minimal centered pagination */
-.src-rsvp__pagination {
-    display: flex;
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .src-rsvp__button,
+    .src-rsvp__page {
+        transition: none !important;
+    }
+}
+
+/* =========================================
+   RSVP STATUS BADGE
+   Stardew Valley pixel style
+========================================= */
+
+.src-rsvp__badge {
+    --badge-outline: #68462d;
+    --badge-shadow: #452b1b;
+    --badge-highlight: #f5e5bd;
+    --badge-background: #d7bd8b;
+    --badge-bottom: #a67a48;
+    --badge-text: #4a3424;
+
+    position: relative;
+
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 22px;
-    font-family: Born2, sans-serif;
-}
 
-.src-rsvp__page {
-    min-width: 34px;
-    height: 34px;
-    padding: 0 10px;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    color: #222222;
-    font-family: Born2, sans-serif;
-    font-size: 16px;
-    line-height: 1;
+    min-height: 24px;
+
+    margin: 0;
+    padding: 6px 9px 7px !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    color: var(--badge-text) !important;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--badge-highlight) 0,
+            var(--badge-highlight) 3px,
+            var(--badge-background) 3px,
+            var(--badge-background) calc(100% - 4px),
+            var(--badge-bottom) calc(100% - 4px),
+            var(--badge-bottom) 100%
+        ) !important;
+
+    font-family: "Press Start 2P", sans-serif !important;
+    font-size: 6px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+
     text-align: center;
-    cursor: pointer;
-    box-shadow: none;
-    appearance: none;
-    transition: none;
-}
+    text-transform: uppercase;
+    white-space: normal;
 
-.src-rsvp__page:hover,
-.src-rsvp__page:focus {
-    background: transparent;
-    color: #b58d3a;
-    outline: none;
-}
+    text-shadow:
+        1px 1px 0 rgba(255, 255, 255, 0.45);
 
-.src-rsvp__page.is-active {
-    background: #222222;
-    color: #ffffff;
-    border-radius: 0;
     box-shadow:
-        0 -3px 0 #222222,
-        0 3px 0 #222222,
-        -3px 0 0 #222222,
-        3px 0 0 #222222;
+        0 3px 0 var(--badge-shadow),
+        inset 3px 0 0 rgba(255, 255, 255, 0.25),
+        inset -3px 0 0 rgba(70, 35, 18, 0.15) !important;
+
+    clip-path: polygon(
+        4px 0,
+        calc(100% - 4px) 0,
+
+        calc(100% - 4px) 2px,
+        calc(100% - 2px) 2px,
+
+        calc(100% - 2px) 4px,
+        100% 4px,
+
+        100% calc(100% - 4px),
+
+        calc(100% - 2px) calc(100% - 4px),
+        calc(100% - 2px) calc(100% - 2px),
+
+        calc(100% - 4px) calc(100% - 2px),
+        calc(100% - 4px) 100%,
+
+        4px 100%,
+
+        4px calc(100% - 2px),
+        2px calc(100% - 2px),
+
+        2px calc(100% - 4px),
+        0 calc(100% - 4px),
+
+        0 4px,
+
+        2px 4px,
+        2px 2px,
+
+        4px 2px
+    );
 }
 
-.src-rsvp__page:disabled {
-    opacity: .35;
-    cursor: not-allowed;
+
+/* =========================================
+   HADIR
+   Nuansa hijau musim semi
+========================================= */
+
+.src-rsvp__badge.is-hadir,
+.src-rsvp__badge--hadir,
+.src-rsvp__badge[data-status="hadir"] {
+    --badge-outline: #42682f;
+    --badge-shadow: #29451e;
+    --badge-highlight: #e5f3b5;
+    --badge-background: #aed27c;
+    --badge-bottom: #739d4e;
+    --badge-text: #294a25;
+
+    outline: 2px solid var(--badge-outline);
+    outline-offset: -2px;
 }
 
-.src-rsvp__page:disabled:hover,
-.src-rsvp__page:disabled:focus {
-    color: #222222;
+
+/* =========================================
+   MASIH RAGU
+   Nuansa emas Stardew Valley
+========================================= */
+
+.src-rsvp__badge.is-ragu,
+.src-rsvp__badge--ragu,
+.src-rsvp__badge[data-status="ragu"],
+.src-rsvp__badge[data-status="masih-ragu"] {
+    --badge-outline: #8a5421;
+    --badge-shadow: #5d3518;
+    --badge-highlight: #fff0ae;
+    --badge-background: #f1c868;
+    --badge-bottom: #c58835;
+    --badge-text: #624017;
+
+    outline: 2px solid var(--badge-outline);
+    outline-offset: -2px;
 }
 
-.src-rsvp__list.is-loading {
-    opacity: .55;
-    pointer-events: none;
+
+/* =========================================
+   TIDAK HADIR
+   Nuansa merah tanah
+========================================= */
+
+.src-rsvp__badge.is-tidak-hadir,
+.src-rsvp__badge--tidak-hadir,
+.src-rsvp__badge[data-status="tidak-hadir"] {
+    --badge-outline: #824336;
+    --badge-shadow: #54291f;
+    --badge-highlight: #f5c2a7;
+    --badge-background: #dc8c70;
+    --badge-bottom: #aa5745;
+    --badge-text: #54271f;
+
+    outline: 2px solid var(--badge-outline);
+    outline-offset: -2px;
+}
+
+
+/* Sedikit efek interaktif */
+
+.src-rsvp__badge:hover {
+    filter: brightness(1.04);
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+    .src-rsvp__badge {
+        min-height: 22px;
+
+        padding: 5px 7px 6px !important;
+
+        font-size: 5px !important;
+        line-height: 1.5 !important;
+
+        box-shadow:
+            0 2px 0 var(--badge-shadow),
+            inset 2px 0 0 rgba(255, 255, 255, 0.25),
+            inset -2px 0 0 rgba(70, 35, 18, 0.15) !important;
+    }
 }

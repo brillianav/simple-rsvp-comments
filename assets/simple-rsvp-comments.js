@@ -9,6 +9,74 @@ jQuery(function ($) {
         var perPage = parseInt(wrapper.data('per-page'), 10) || 5;
         var currentPage = 1;
 
+        /* =========================================
+           STATUS BADGE
+        ========================================= */
+
+        function normalizeStatus(value) {
+            return String(value || '')
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, ' ');
+        }
+
+        function applyStatusBadgeColors() {
+            list.find('.src-rsvp__badge').each(function () {
+                var badge = $(this);
+                var status = normalizeStatus(badge.text());
+
+                badge
+                    .removeClass(
+                        'is-hadir is-ragu is-tidak-hadir'
+                    )
+                    .removeAttr('data-status');
+
+                /* Hadir */
+                if (
+                    status === 'hadir' ||
+                    status === 'attending' ||
+                    status === 'attend'
+                ) {
+                    badge
+                        .addClass('is-hadir')
+                        .attr('data-status', 'hadir');
+
+                    return;
+                }
+
+                /* Masih ragu */
+                if (
+                    status === 'masih ragu' ||
+                    status === 'ragu' ||
+                    status === 'maybe' ||
+                    status === 'tentative'
+                ) {
+                    badge
+                        .addClass('is-ragu')
+                        .attr('data-status', 'masih-ragu');
+
+                    return;
+                }
+
+                /* Tidak hadir */
+                if (
+                    status === 'tidak hadir' ||
+                    status === 'tidak bisa hadir' ||
+                    status === 'berhalangan hadir' ||
+                    status === 'not attending' ||
+                    status === 'absent'
+                ) {
+                    badge
+                        .addClass('is-tidak-hadir')
+                        .attr('data-status', 'tidak-hadir');
+                }
+            });
+        }
+
+        /* =========================================
+           LOAD COMMENTS
+        ========================================= */
+
         function loadComments(page) {
             currentPage = page || 1;
 
@@ -18,23 +86,50 @@ jQuery(function ($) {
                 url: SimpleRSVPComments.ajaxUrl,
                 type: 'POST',
                 dataType: 'json',
+
                 data: {
                     action: 'simple_rsvp_load',
                     nonce: SimpleRSVPComments.nonce,
                     page: currentPage,
                     per_page: perPage
                 },
+
                 success: function (response) {
                     if (response.success) {
                         list.html(response.data.html);
-                        renderPagination(response.data.page, response.data.totalPages);
+
+                        /*
+                         * Terapkan warna badge setelah
+                         * komentar AJAX dimasukkan.
+                         */
+                        applyStatusBadgeColors();
+
+                        renderPagination(
+                            response.data.page,
+                            response.data.totalPages
+                        );
                     }
                 },
+
+                error: function () {
+                    list.html(
+                        '<div class="src-rsvp__empty">' +
+                        'Gagal memuat komentar.' +
+                        '</div>'
+                    );
+
+                    pagination.empty();
+                },
+
                 complete: function () {
                     list.removeClass('is-loading');
                 }
             });
         }
+
+        /* =========================================
+           PAGINATION
+        ========================================= */
 
         function renderPagination(page, totalPages) {
             page = parseInt(page, 10) || 1;
@@ -46,76 +141,150 @@ jQuery(function ($) {
                 return;
             }
 
-            var prevDisabled = page <= 1 ? ' disabled' : '';
-            var nextDisabled = page >= totalPages ? ' disabled' : '';
+            var prevDisabled = page <= 1
+                ? ' disabled'
+                : '';
+
+            var nextDisabled = page >= totalPages
+                ? ' disabled'
+                : '';
 
             pagination.append(
-                '<button type="button" class="src-rsvp__page src-rsvp__page--prev"' + prevDisabled + ' data-page="' + (page - 1) + '">Prev</button>'
+                '<button ' +
+                    'type="button" ' +
+                    'class="src-rsvp__page src-rsvp__page--prev"' +
+                    prevDisabled +
+                    ' data-page="' + (page - 1) + '">' +
+                    'Prev' +
+                '</button>'
             );
 
             for (var i = 1; i <= totalPages; i++) {
-                var activeClass = i === page ? ' is-active' : '';
+                var activeClass = i === page
+                    ? ' is-active'
+                    : '';
 
                 pagination.append(
-                    '<button type="button" class="src-rsvp__page' + activeClass + '" data-page="' + i + '">' + i + '</button>'
+                    '<button ' +
+                        'type="button" ' +
+                        'class="src-rsvp__page' + activeClass + '" ' +
+                        'data-page="' + i + '">' +
+                        i +
+                    '</button>'
                 );
             }
 
             pagination.append(
-                '<button type="button" class="src-rsvp__page src-rsvp__page--next"' + nextDisabled + ' data-page="' + (page + 1) + '">Next</button>'
+                '<button ' +
+                    'type="button" ' +
+                    'class="src-rsvp__page src-rsvp__page--next"' +
+                    nextDisabled +
+                    ' data-page="' + (page + 1) + '">' +
+                    'Next' +
+                '</button>'
             );
         }
+
+        /* =========================================
+           SUBMIT FORM
+        ========================================= */
 
         form.on('submit', function (e) {
             e.preventDefault();
 
             var button = form.find('.src-rsvp__button');
+            var originalButtonText = button.text();
 
-            button.text('Mengirim...').prop('disabled', true);
-            alertBox.removeClass('is-success is-error').text('');
+            button
+                .text('Mengirim...')
+                .prop('disabled', true);
+
+            alertBox
+                .removeClass('is-success is-error')
+                .text('');
 
             $.ajax({
                 url: SimpleRSVPComments.ajaxUrl,
                 type: 'POST',
                 dataType: 'json',
-                data: form.serialize() + '&action=simple_rsvp_submit&nonce=' + SimpleRSVPComments.nonce,
+
+                data:
+                    form.serialize() +
+                    '&action=simple_rsvp_submit' +
+                    '&nonce=' +
+                    encodeURIComponent(SimpleRSVPComments.nonce),
+
                 success: function (response) {
                     if (response.success) {
-                        alertBox.addClass('is-success').text(response.data.message);
+                        alertBox
+                            .addClass('is-success')
+                            .text(response.data.message);
 
                         form.find('textarea').val('');
                         form.find('select').val('');
 
                         loadComments(1);
                     } else {
-                        alertBox.addClass('is-error').text(response.data.message);
+                        var errorMessage =
+                            response.data &&
+                            response.data.message
+                                ? response.data.message
+                                : 'Gagal mengirim RSVP.';
+
+                        alertBox
+                            .addClass('is-error')
+                            .text(errorMessage);
                     }
                 },
+
                 error: function () {
-                    alertBox.addClass('is-error').text('Terjadi kesalahan.');
+                    alertBox
+                        .addClass('is-error')
+                        .text('Terjadi kesalahan.');
                 },
+
                 complete: function () {
-                    button.text('Kirim').prop('disabled', false);
+                    button
+                        .text(originalButtonText || 'Kirim')
+                        .prop('disabled', false);
                 }
             });
         });
 
-        pagination.on('click', '.src-rsvp__page', function () {
-            var button = $(this);
+        /* =========================================
+           PAGINATION CLICK
+        ========================================= */
 
-            if (button.prop('disabled') || button.hasClass('is-active')) {
-                return;
+        pagination.on(
+            'click',
+            '.src-rsvp__page',
+            function () {
+                var button = $(this);
+
+                if (
+                    button.prop('disabled') ||
+                    button.hasClass('is-active')
+                ) {
+                    return;
+                }
+
+                var page = parseInt(
+                    button.data('page'),
+                    10
+                );
+
+                if (!page || page < 1) {
+                    return;
+                }
+
+                loadComments(page);
             }
+        );
 
-            var page = parseInt(button.data('page'), 10);
+        /* Terapkan jika sudah ada HTML bawaan */
+        applyStatusBadgeColors();
 
-            if (!page || page < 1) {
-                return;
-            }
-
-            loadComments(page);
-        });
-
+        /* Initial load */
         loadComments(1);
     });
 });
