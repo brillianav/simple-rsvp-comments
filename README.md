@@ -11,7 +11,7 @@ Simple RSVP Comments is built for invitation pages, event websites, wedding land
 - Guest name, attendance status, and message fields.
 - Attendance options: `Hadir`, `Tidak Hadir`, and `Masih Ragu`.
 - AJAX form submission with no page refresh.
-- Live message list with pagination.
+- Live message list with compact ellipsis pagination.
 - Automatic attendance badge styling for attending, maybe, and not attending states.
 - RSVP entries stored as a WordPress custom post type.
 - Admin dashboard menu for reviewing and editing entries.
@@ -71,7 +71,7 @@ The shortcode renders:
 - An attendance dropdown.
 - A message field for wishes or comments.
 - A pixel-style submit button.
-- A paginated list of submitted RSVP messages with initials avatars and colored attendance badges.
+- A paginated list of submitted RSVP messages with initials avatars, colored attendance badges, and compact ellipsis controls.
 
 When a guest submits the form, the plugin saves the RSVP and refreshes the message list through AJAX.
 

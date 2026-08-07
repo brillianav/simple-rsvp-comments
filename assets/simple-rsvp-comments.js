@@ -159,8 +159,25 @@ jQuery(function ($) {
                 '</button>'
             );
 
-            for (var i = 1; i <= totalPages; i++) {
-                var activeClass = i === page
+            var visiblePages = getVisiblePaginationPages(
+                page,
+                totalPages
+            );
+
+            visiblePages.forEach(function (item) {
+                if (item === 'ellipsis') {
+                    pagination.append(
+                        '<span ' +
+                            'class="src-rsvp__ellipsis" ' +
+                            'aria-hidden="true">' +
+                            '...' +
+                        '</span>'
+                    );
+
+                    return;
+                }
+
+                var activeClass = item === page
                     ? ' is-active'
                     : '';
 
@@ -168,11 +185,11 @@ jQuery(function ($) {
                     '<button ' +
                         'type="button" ' +
                         'class="src-rsvp__page' + activeClass + '" ' +
-                        'data-page="' + i + '">' +
-                        i +
+                        'data-page="' + item + '">' +
+                        item +
                     '</button>'
                 );
-            }
+            });
 
             pagination.append(
                 '<button ' +
@@ -183,6 +200,28 @@ jQuery(function ($) {
                     'Next' +
                 '</button>'
             );
+        }
+
+        function getVisiblePaginationPages(page, totalPages) {
+            if (totalPages <= 4) {
+                var allPages = [];
+
+                for (var i = 1; i <= totalPages; i++) {
+                    allPages.push(i);
+                }
+
+                return allPages;
+            }
+
+            if (page <= 2) {
+                return [1, 2, 'ellipsis', totalPages];
+            }
+
+            if (page >= totalPages - 1) {
+                return [1, 'ellipsis', totalPages - 1, totalPages];
+            }
+
+            return [1, 'ellipsis', page, 'ellipsis', totalPages];
         }
 
         /* =========================================

@@ -1014,15 +1014,17 @@
     align-items: center;
     justify-content: center;
 
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 7px;
 
     width: 100%;
+    max-width: 100%;
 
     margin: 24px 0 0;
     padding: 4px 0 6px;
 
     font-family: "Press Start 2P", sans-serif;
+    white-space: nowrap;
 }
 
 .src-rsvp button.src-rsvp__page,
@@ -1065,6 +1067,26 @@
     transition:
         transform 0.1s steps(2, end),
         filter 0.1s steps(2, end);
+}
+
+.src-rsvp__ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    min-width: 20px;
+    height: 38px;
+
+    color: #7d421f;
+
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 7px;
+    font-weight: 400;
+    line-height: 1;
+
+    user-select: none;
 }
 
 .src-rsvp button.src-rsvp__page:hover,
@@ -1205,18 +1227,30 @@
     }
 
     .src-rsvp__pagination {
-        gap: 5px;
+        gap: 4px;
     }
 
     .src-rsvp button.src-rsvp__page,
     .src-rsvp .src-rsvp__page {
-        min-width: 34px;
+        min-width: 32px;
         height: 34px;
 
-        padding-right: 7px !important;
-        padding-left: 7px !important;
+        padding-right: 6px !important;
+        padding-left: 6px !important;
 
         font-size: 6px !important;
+    }
+
+    .src-rsvp__page--prev,
+    .src-rsvp__page--next {
+        min-width: 48px !important;
+    }
+
+    .src-rsvp__ellipsis {
+        min-width: 16px;
+        height: 34px;
+
+        font-size: 6px;
     }
 }
 
