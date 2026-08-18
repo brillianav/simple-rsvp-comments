@@ -668,7 +668,7 @@
     gap: 14px;
 
     margin: 0 0 13px !important;
-    padding: 14px 12px !important;
+    padding: 15px 13px !important;
 
     border: 1px solid #e5d7c5 !important;
     border-radius: 0 !important;
@@ -697,12 +697,12 @@
     align-items: center;
     justify-content: center;
 
-    flex: 0 0 60px;
+    flex: 0 0 58px;
 
-    width: 60px !important;
-    height: 60px !important;
-    min-width: 60px !important;
-    min-height: 60px !important;
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    min-height: 58px !important;
 
     margin: 0;
     padding: 0;
@@ -716,13 +716,14 @@
     font-family: "Press Start 2P", sans-serif;
     font-size: 10px;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.15;
 
     text-align: center;
     text-transform: uppercase;
 
     text-shadow:
-        1px 1px 0 rgba(255, 255, 255, 0.65);
+        1px 1px 0 rgba(255, 255, 255, 0.72),
+        0 2px 0 rgba(74, 38, 16, 0.08);
 
     clip-path: polygon(
         8px 0,
@@ -748,10 +749,12 @@
     );
 
     filter:
-        drop-shadow(0 3px 0 var(--src-avatar-shadow, #24130b));
+        drop-shadow(0 2px 0 var(--src-avatar-shadow, #24130b));
 
     isolation: isolate;
-    overflow: visible;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+    overflow: hidden;
 }
 
 .src-rsvp__avatar::before {
@@ -759,15 +762,15 @@
 
     position: absolute;
 
-    inset: 3px;
+    inset: 2px;
     z-index: -2;
 
     background:
         linear-gradient(
             to bottom,
             var(--src-avatar-frame-light, #f7d58a) 0,
-            var(--src-avatar-frame-light, #f7d58a) 4px,
-            var(--src-avatar-frame, #d49048) 4px,
+            var(--src-avatar-frame-light, #f7d58a) 3px,
+            var(--src-avatar-frame, #d49048) 3px,
             var(--src-avatar-frame-mid, #bd7138) calc(100% - 5px),
             var(--src-avatar-frame-dark, #75401f) calc(100% - 5px),
             var(--src-avatar-frame-dark, #75401f) 100%
@@ -798,7 +801,8 @@
 
     box-shadow:
         inset 3px 0 0 var(--src-avatar-frame-glow, rgba(255, 225, 155, 0.55)),
-        inset -3px 0 0 var(--src-avatar-frame-shade, rgba(93, 48, 22, 0.3));
+        inset -3px 0 0 var(--src-avatar-frame-shade, rgba(93, 48, 22, 0.3)),
+        inset 0 -4px 0 rgba(66, 34, 16, 0.16);
 
     pointer-events: none;
 }
@@ -808,7 +812,7 @@
 
     position: absolute;
 
-    inset: 9px;
+    inset: 8px;
     z-index: -1;
 
     background:
@@ -836,7 +840,8 @@
 
     box-shadow:
         inset 3px 3px 0 rgba(255, 255, 255, 0.35),
-        inset -3px -3px 0 rgba(85, 48, 24, 0.12);
+        inset -3px -3px 0 rgba(85, 48, 24, 0.12),
+        0 0 0 1px rgba(93, 55, 28, 0.16);
 
     pointer-events: none;
 }
@@ -1227,24 +1232,9 @@
     }
 
     .src-rsvp__card {
-        gap: 11px;
+        gap: 12px;
 
-        padding: 12px 9px !important;
-    }
-
-    .src-rsvp__avatar {
-        flex-basis: 54px;
-
-        width: 54px !important;
-        height: 54px !important;
-        min-width: 54px !important;
-        min-height: 54px !important;
-
-        font-size: 8px;
-    }
-
-    .src-rsvp__avatar::after {
-        inset: 8px;
+        padding: 13px 10px !important;
     }
 
     .src-rsvp__name-row strong {

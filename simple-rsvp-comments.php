@@ -3,7 +3,7 @@
  * Plugin Name: Simple RSVP Comments
  * Plugin URI: https://brillianav.com
  * Description: Form RSVP dengan daftar ucapan yang muncul langsung tanpa refresh halaman. Gunakan shortcode [simple_rsvp_comments].
- * Version: 1.0.0
+ * Version: 1.0.7
  * Author: Brillian
  * Text Domain: simple-rsvp-comments
  */
@@ -14,6 +14,7 @@ if (!defined('ABSPATH')) {
 
 class Simple_RSVP_Comments {
 
+    const VERSION = '1.0.7';
     const POST_TYPE = 'simple_rsvp_entry';
     const NONCE_ACTION = 'simple_rsvp_nonce_action';
     const NONCE_NAME = 'simple_rsvp_nonce';
@@ -237,10 +238,9 @@ class Simple_RSVP_Comments {
             $attendance = get_post_meta($entry_id, '_src_attendance', true);
             $date       = get_the_date('j F Y \a\t H.i');
             $initials   = $this->get_initials($name);
-            $avatar_class = 'src-rsvp__avatar src-rsvp__avatar--' . (($entry_id % 5) + 1);
             ?>
             <div class="src-rsvp__card">
-                <div class="<?php echo esc_attr($avatar_class); ?>">
+                <div class="src-rsvp__avatar" aria-hidden="true">
                     <?php echo esc_html($initials); ?>
                 </div>
 
@@ -384,17 +384,21 @@ class Simple_RSVP_Comments {
         $name = trim(wp_strip_all_tags($name));
 
         if ($name === '') {
-            return '??';
+            return '?';
         }
 
         $words = preg_split('/\s+/', $name);
+        $words = array_filter($words);
+        $words = array_slice($words, 0, 3);
+        $initials = '';
 
-        if (count($words) >= 2) {
-            return strtoupper(mb_substr($words[0], 0, 1) . mb_substr($words[1], 0, 1));
+        foreach ($words as $word) {
+            $initials .= mb_substr($word, 0, 1);
         }
 
-        return strtoupper(mb_substr($name, 0, 2));
+        return strtoupper($initials);
     }
+
 }
 
 register_activation_hook(__FILE__, ['Simple_RSVP_Comments', 'activate']);

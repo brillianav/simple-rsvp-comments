@@ -10,6 +10,27 @@ jQuery(function ($) {
         var currentPage = 1;
 
         /* =========================================
+           RANDOM AVATAR BACKGROUND
+        ========================================= */
+
+        function applyRandomAvatarBackgrounds() {
+            list.find('.src-rsvp__avatar').each(function () {
+                var avatar = $(this);
+                var variant = Math.floor(Math.random() * 5) + 1;
+
+                avatar
+                    .removeClass(
+                        'src-rsvp__avatar--1 ' +
+                        'src-rsvp__avatar--2 ' +
+                        'src-rsvp__avatar--3 ' +
+                        'src-rsvp__avatar--4 ' +
+                        'src-rsvp__avatar--5'
+                    )
+                    .addClass('src-rsvp__avatar--' + variant);
+            });
+        }
+
+        /* =========================================
            STATUS BADGE
         ========================================= */
 
@@ -99,9 +120,10 @@ jQuery(function ($) {
                         list.html(response.data.html);
 
                         /*
-                         * Terapkan warna badge setelah
+                         * Terapkan warna avatar dan badge setelah
                          * komentar AJAX dimasukkan.
                          */
+                        applyRandomAvatarBackgrounds();
                         applyStatusBadgeColors();
 
                         renderPagination(
@@ -321,6 +343,7 @@ jQuery(function ($) {
         );
 
         /* Terapkan jika sudah ada HTML bawaan */
+        applyRandomAvatarBackgrounds();
         applyStatusBadgeColors();
 
         /* Initial load */

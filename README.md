@@ -1,23 +1,162 @@
 # Simple RSVP Comments
 
-A lightweight WordPress RSVP plugin with guest messages, instant AJAX submissions, and a playful pixel-art inspired comment display.
+A playful WordPress RSVP plugin for invitation pages, wedding websites, event pages, and compact guestbooks.
 
-Simple RSVP Comments is built for invitation pages, event websites, wedding landing pages, and simple guestbooks. Drop in a shortcode, let guests confirm their attendance, and show their wishes without reloading the page.
+Simple RSVP Comments gives guests a friendly RSVP form, saves their response, and shows their wishes instantly without refreshing the page. The interface uses a warm pixel-art style with compact pagination, colorful attendance badges, and name-based avatar initials.
 
-## Highlights
+Current version: `1.0.7`
 
-- RSVP form powered by the `[simple_rsvp_comments]` shortcode.
-- Alternative shortcode support with `[rsvp_form]`.
-- Guest name, attendance status, and message fields.
-- Attendance options: `Hadir`, `Tidak Hadir`, and `Masih Ragu`.
-- AJAX form submission with no page refresh.
-- Live message list with compact ellipsis pagination.
-- Automatic attendance badge styling for attending, maybe, and not attending states.
-- RSVP entries stored as a WordPress custom post type.
-- Admin dashboard menu for reviewing and editing entries.
-- Custom admin column for attendance status.
-- Admin meta box for updating attendance status.
-- Stardew-inspired pixel UI styling kept in separate frontend assets.
+## Why Use It
+
+- Add an RSVP section with one shortcode.
+- Let guests submit attendance and wishes without page reloads.
+- Show responses immediately in a styled message list.
+- Keep the admin experience simple with a dedicated RSVP Entries screen.
+- Use playful styling without depending on a page builder.
+
+## Quick Start
+
+1. Upload the plugin folder to:
+
+```text
+wp-content/plugins/simple-rsvp-comments/
+```
+
+2. Activate `Simple RSVP Comments` from the WordPress Plugins screen.
+
+3. Add this shortcode to any page or post:
+
+```text
+[simple_rsvp_comments]
+```
+
+That is enough to show the form, save RSVP entries, and render guest messages.
+
+## Shortcodes
+
+Main shortcode:
+
+```text
+[simple_rsvp_comments]
+```
+
+Alias shortcode:
+
+```text
+[rsvp_form]
+```
+
+Change the number of messages shown per page:
+
+```text
+[simple_rsvp_comments per_page="10"]
+```
+
+Default `per_page` value: `5`.
+
+## Guest Experience
+
+Guests see a focused RSVP form with:
+
+- Name field.
+- Attendance dropdown.
+- Message or wishes textarea.
+- Pixel-style submit button.
+- Success or error feedback after submit.
+
+After submission, the message list refreshes through AJAX, so the page stays smooth and does not reload.
+
+## Message List
+
+Each RSVP message is displayed as a styled card with:
+
+- Guest name.
+- Attendance badge.
+- Guest message.
+- Submission date.
+- Initial avatar based on the guest name.
+- Compact pagination with ellipsis when there are many pages.
+
+Initial avatar rules:
+
+```text
+Ayu                         -> A
+Saiful Hadi                 -> SH
+Tamu Undangan VIP           -> TUV
+Made Bagus Putra Wibawa     -> MBP
+```
+
+The avatar uses a maximum of 3 letters. Frame colors are randomized in JavaScript whenever comments are rendered, so colors may differ after refreshes or across devices.
+
+## Admin Experience
+
+The plugin registers a private custom post type:
+
+```text
+simple_rsvp_entry
+```
+
+In the WordPress dashboard, admins can open `RSVP Entries` to review and edit submissions.
+
+Each entry stores:
+
+- Post title: guest name.
+- Post content: guest message.
+- Meta `_src_attendance`: attendance status.
+
+The admin list also includes an attendance column, and the edit screen includes a small meta box for changing the attendance value.
+
+## Attendance Options
+
+The default attendance values are:
+
+```text
+Hadir
+Tidak Hadir
+Masih Ragu
+```
+
+The frontend JavaScript normalizes these labels and applies the correct badge color automatically.
+
+## Guest Name Prefill
+
+If your site already provides a `[to_name]` shortcode, Simple RSVP Comments will use it to prefill the name field.
+
+This is useful for invitation pages that personalize guest names through another theme, plugin, or invitation system.
+
+## Styling
+
+Frontend CSS:
+
+```text
+assets/simple-rsvp-comments.css
+```
+
+Frontend JavaScript:
+
+```text
+assets/simple-rsvp-comments.js
+```
+
+The visual direction is inspired by cozy pixel-art interfaces:
+
+- Pixel-style form controls.
+- Decorative clipped buttons.
+- Warm cream, brown, gold, green, teal, and berry tones.
+- Compact cards for easy reading.
+- Randomized avatar frame colors.
+- Attendance badges with distinct color states.
+
+The stylesheet references `"Press Start 2P"` and `"Merchant Copy"`. Load those fonts from your theme or builder for the intended look. If they are unavailable, the browser will use fallback fonts.
+
+## Security
+
+The plugin uses standard WordPress safeguards:
+
+- Nonce validation for AJAX requests.
+- Sanitized text fields and textarea content.
+- Attendance value validation.
+- Capability checks before saving admin meta box data.
 
 ## Project Structure
 
@@ -30,120 +169,19 @@ simple-rsvp-comments/
     `-- simple-rsvp-comments.js
 ```
 
-## Installation
-
-1. Download or clone this repository.
-2. Copy the `simple-rsvp-comments` folder into your WordPress plugins directory:
-
-```text
-wp-content/plugins/simple-rsvp-comments/
-```
-
-3. Open your WordPress dashboard.
-4. Go to `Plugins`.
-5. Activate `Simple RSVP Comments`.
-
-## Usage
-
-Add the shortcode to any page or post:
-
-```text
-[simple_rsvp_comments]
-```
-
-You can also use the alias shortcode:
-
-```text
-[rsvp_form]
-```
-
-By default, the message list shows 5 entries per page. You can customize that with the `per_page` attribute:
-
-```text
-[simple_rsvp_comments per_page="10"]
-```
-
-## What Guests See
-
-The shortcode renders:
-
-- A name field.
-- An attendance dropdown.
-- A message field for wishes or comments.
-- A pixel-style submit button.
-- A paginated list of submitted RSVP messages with initials avatars, colored attendance badges, and compact ellipsis controls.
-
-When a guest submits the form, the plugin saves the RSVP and refreshes the message list through AJAX.
-
-## How It Works
-
-The plugin registers a private WordPress custom post type:
-
-```text
-simple_rsvp_entry
-```
-
-Each RSVP submission is saved as a post:
-
-- Post title: guest name.
-- Post content: guest message.
-- Post meta `_src_attendance`: attendance status.
-
-The frontend communicates with WordPress through `admin-ajax.php` using two AJAX actions:
-
-- `simple_rsvp_submit` for saving new RSVP entries.
-- `simple_rsvp_load` for loading paginated RSVP messages.
-
-## Guest Name Prefill
-
-If your site provides a `[to_name]` shortcode, this plugin will automatically use it to prefill the guest name field.
-
-This is helpful for invitation pages that already personalize guest names through another theme, builder, or invitation system.
-
-## Styling
-
-Frontend styles live in:
-
-```text
-assets/simple-rsvp-comments.css
-```
-
-Frontend behavior lives in:
-
-```text
-assets/simple-rsvp-comments.js
-```
-
-The stylesheet uses a warm pixel-art visual direction with custom colors, clipped button shapes, pixel cards, and status badges. It references the `"Press Start 2P"` and `"Merchant Copy"` font families. Make sure those fonts are loaded by your theme or page builder if you want the intended visual style. If they are not available, the browser will fall back to default fonts.
-
-The JavaScript also normalizes RSVP status text and applies badge classes for:
-
-- `Hadir`
-- `Masih Ragu`
-- `Tidak Hadir`
-
-## Security
-
-The plugin uses standard WordPress safeguards:
-
-- Nonce validation for AJAX requests.
-- Input sanitization before saving data.
-- Attendance value validation.
-- Capability checks when saving admin meta box data.
-
 ## Requirements
 
 - WordPress.
-- WordPress bundled jQuery.
 - PHP supported by your WordPress installation.
+- WordPress bundled jQuery.
 
 ## Roadmap Ideas
 
-- Export RSVP entries to CSV.
-- Add configurable attendance labels.
-- Add shortcode attributes for form labels.
-- Add moderation controls before messages appear publicly.
-- Add settings page for styling and behavior.
+- CSV export for RSVP entries.
+- Configurable attendance labels.
+- Shortcode attributes for field labels.
+- Optional moderation before messages appear publicly.
+- Settings page for styling and behavior.
 
 ## License
 
